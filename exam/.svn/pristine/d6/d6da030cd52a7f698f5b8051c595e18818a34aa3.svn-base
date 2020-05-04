@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../easyui/jquery.min.js" charset="UTF-8"></script>
+<script src="../easyui/jquery.easyui.min.js" charset="UTF-8"></script>
+<link rel="stylesheet" href="../easyui/themes/default/easyui.css">
+<link rel="stylesheet" href="../easyui/themes/icon.css">
+<link rel="stylesheet" href="../css/userList.css">
+</head>
+<body>
+	<div id="center">
+		<div id="findDiv">
+			<form id="findForm">
+					用户账号：<input class="easyui-textbox" name="userId" style="width: 100px">
+					姓名：<input class="easyui-textbox" name="userName" style="width: 100px">
+					性别：<input class="easyui-combobox" name="sex"
+						style="width: 50px"
+						data-options="limitToList:true,valueField:'value',textField:'value',data:[{value:'男'},{value:'女'}]">
+						
+					用户状态：<input class="easyui-combobox" name="loginState"
+						style="width: 80px"
+						data-options="limitToList:true,valueField:'value',textField:'text',data:[{value:'Y',text:'已启用'},{value:'N',text:'已禁用'}]">
+			
+					<span id="submit" onclick="findQuery()">查询</span>
+			</form>
+		</div>
+
+		<div id="addDiv">
+			<form id="addInforForm">
+				<div>
+					用户账号：<input class="easyui-textbox" name="userId"
+						data-options="width:150" />
+				</div>
+				<div>
+					用户账号：<input class="easyui-textbox" name="userName"
+						data-options="width:150" />
+				</div>
+				<div>
+					用户密码：<input class="easyui-textbox" name="passWord"
+						data-options="width:150" />
+				</div>
+				<div>
+					用户邮箱：<input class="easyui-textbox" name="email"
+						data-options="width:150" />
+				</div>
+				<div>
+					性别：<input class="easyui-combobox" name="loginState"
+						style="width: 100px"
+						data-options="limitToList:true,valueField:'value',textField:'value',data:[{value:'男'},{value:'女'}]">
+				</div>
+				<div>
+					年龄：<input class="easyui-textbox" name="age"
+						data-options="width:150" />
+				</div>
+			</form>
+		</div>
+		<div id="listDiv">
+			<table id="showTable">
+
+			</table>
+		</div>
+		<div id="updateDiv">
+			<form id="updateInforForm">
+				<div>
+					用户账号：<input class="easyui-textbox" name="userId"
+						data-options="width:150,readonly:true" />
+				</div>
+				<div>
+					用户账号：<input class="easyui-textbox" name="userName"
+						data-options="width:150" />
+				</div>
+				<div>
+					用户密码：<input class="easyui-textbox" name="passWord"
+						data-options="width:150" />
+				</div>
+				<div>
+					用户邮箱：<input class="easyui-textbox" name="emily"
+						data-options="width:150" />
+				</div>
+				<div>
+					性别：<input class="easyui-combobox" name="loginState"
+						style="width: 100px"
+						data-options="limitToList:true,valueField:'value',textField:'value',data:[{value:'男'},{value:'女'}]">
+				</div>
+				<div>
+					年龄：<input class="easyui-textbox" name="age"
+						data-options="width:150" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/userList.js"></script>
+</body>
+</html>

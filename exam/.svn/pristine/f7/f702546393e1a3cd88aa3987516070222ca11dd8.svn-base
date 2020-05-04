@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<context:component-scan base-package="com.znsd">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 定义数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.1.195:3306/exam?characterEncoding=utf8" />
+        <property name="user" value="examUser" />
+        <property name="password" value="123123" />
+        <!-- 队列中的最小连接数 -->
+	    <property name="minPoolSize" value="3"></property>
+	    <!-- 队列中的最大连接数 -->
+	    <property name="maxPoolSize" value="20"></property>
+	    <!-- 当连接耗尽时创建的连接数 -->
+	    <property name="acquireIncrement" value="5"></property>
+	    <!-- 等待时间 -->
+	    <property name="checkoutTimeout" value="20000"></property>
+	    <!-- 初始化连接数 -->
+	    <property name="initialPoolSize" value="3"></property>
+	    <!-- 最大空闲时间，超出时间连接将被丢弃 -->
+	    <property name="maxIdleTime" value="300"></property>
+	    <!-- 每隔60秒检测空闲连接 -->
+	    <property name="idleConnectionTestPeriod" value="20000"></property>
+    </bean>
+	
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!--jdbc事务管理器 -->
+	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 事务的通知方式 -->
+	<tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
+		<tx:attributes> 
+			<!-- read-only 事务为只读，一般查询数据可把该属性设置为true，可以提升效率 -->
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="search*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="query*" propagation="REQUIRED" read-only="true" />
+			<!-- propagation为事务的传播属性，常用为REQUIRED：如果当前线程有事务就直接使用当前事务，没有就创建一个事务 -->
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="submit*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<context:annotation-config></context:annotation-config>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	
+</beans>

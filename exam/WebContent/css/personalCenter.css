@@ -1,0 +1,137 @@
+*{
+    margin:0px;
+    padding:0px;
+    text-decoration: none;
+}
+
+#top{
+    height:54px;
+    line-height: 54px;
+    border-bottom:1px solid #dddddd;
+}
+
+#top>p{
+    min-width: 720px;
+}
+#showLogo{
+    display: block;
+    float:left;
+    width: 150px;
+    height: 40px;
+    margin: 5px 50px;
+    background: url("../img/logo.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+#returnHome{
+    display: block;
+    float: right;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    background: #00bbee;
+    border-radius: 5px;
+    line-height: 32px;
+    margin-top: 11px;
+    margin-right: 50px;
+    width:80px;
+}
+
+#center{
+    width:800px;
+    margin:10px auto;
+    min-height: 720px;
+    border: 1px solid #8d8d8d;
+}
+#head{
+    width:400px;
+    height:150px;
+    border: 1px solid #8d8d8d;
+    margin: 10px auto;
+}
+#headDl{
+    text-align: center;
+    height:150px;
+}
+#headDl dt{
+    height:150px;
+    width:149px;
+    float: left;
+    border-right:1px solid #8d8d8d;
+}
+#headDl dd{
+    width:240px;
+    float: left;
+    padding-left:5px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 30px;
+}
+#headDl dd span{
+    font-size:12px;
+}
+#headImg{
+    border-radius: 50%;
+    margin: 10px auto 0px;
+    width:100px;
+    height:100px;
+    border-width: 0px;
+}
+#changeHeadImg{
+    display: block;
+    width: 80px;
+    height:30px;
+    color:white;
+    margin: 0px auto;
+    background: #00bbee;
+    border-radius: 5px;
+    border-width: 0px;
+}
+.changeBtn{
+    float:right;
+    margin: 5px;
+}
+#headDl .inputBtn[type=text]{
+    width:50px;
+}
+
+#center>div>h6{
+    background: #DDDDDD;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    margin:10px 0px;
+    border: 1px solid #8d8d8d;
+    border-left: none;
+    border-right: none;
+}
+
+.securitySet{
+    width: 300px;
+    height:30px;
+    line-height:30px;
+    font-size:14px;
+    margin: 10px auto;
+}
+
+.securitySet span{
+	font-size:12px;
+}
+
+#recordTable{
+	font-size:14px;
+	border:1px solid #aaaaaa;
+	margin:10px auto;
+}
+#recordTable td{
+	padding:10px;
+	text-align:center;
+}
+#recordTable span{
+	font-size:12px;
+}
+
+
+
+
+

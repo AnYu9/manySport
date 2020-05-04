@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="easyui/themes/icon.css">
+    <script src="easyui/jquery.min.js"></script>
+    <script src="easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div id="center">
+        <div id="loginDiv">
+            <p>
+                <img id="headImg" src="img/default.jpg">
+            </p>
+
+            <input type="text" id="userName" onblur="loadUserHeadImg(this.value)" placeholder="用户名/邮箱" /> <input
+                type="password" id="password" placeholder="密码" /><br />
+
+            <p>
+                <input type="checkbox" id="autoLogin" value="true" /> 自动登录
+                <a href="#">忘记密码？</a>
+            </p>
+
+            <input id="submit" type="submit" value="登录" /><br/>
+            <span id="errorMessage"></span>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+
+#center{
+    width:980px;
+    margin:10px auto;
+    padding:20px 10px;
+    min-height: 720px;
+    border: 1px solid #8d8d8d;
+}
+#findDiv{
+	font-size:14px;
+}
+.executeBtn{
+	border: none;
+	background: red;
+	color: white;
+	line-height: 20px;
+	padding: 5px 10px;
+	border-radius: 3px;
+	margin:5px;
+}
+#listDiv{
+	border-top:1px #aaaaaa solid;
+	margin:20px auto;
+	padding-top:10px;
+	text-align:center;
+}
+
+#submit{
+    font-size:14px;
+    padding:5px 20px;
+    margin-left:20px;
+    color:white;
+    background: #00bbee;
+    border-radius: 5px;
+    border-width: 0px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/personalCenter.css">
+    <link rel="stylesheet" href="easyui/themes/default/easyui.css">
+    <link rel="stylesheet" href="easyui/themes/icon.css">
+    <script src="easyui/jquery.min.js"></script>
+    <script src="easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+<div id="top">
+    <p>
+        <span id="showLogo"></span>
+        <a id="returnHome">返回首页</a>
+    </p>
+</div>
+
+<div id="center">
+    <div id="head">
+        <dl id="headDl">
+            <dt>
+                <img src="img/default.jpg" id="headImg"> <input
+                    id="headImgInput" name="headImg" type="file" />
+                <button id="changeHeadImg">更改头像</button>
+            </dt>
+            <dd>
+               	用户名：<span id="userId"></span>
+            </dd>
+            <dd>
+                姓名：<span id="userName" flag="true"></span>
+                <input type="text" name="userName" class="inputBtn" />
+                <button class="changeBtn">修改</button>
+            </dd>
+            <dd>
+                性别：<span id="sex" flag="true"></span>
+                <input type="text" name="sex" class="inputBtn" />
+                <button class="changeBtn">修改</button>
+            </dd>
+            <dd>
+                年龄：<span id="age" flag="true"></span>
+                <input type="text" name="age"  class="inputBtn" />
+                <button class="changeBtn">修改</button>
+            </dd>
+            <dd>
+               	 考试积分：<span id="integral"></span>
+               	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               	 身份：<span id="role"></span>
+            </dd>
+        </dl>
+    </div>
+
+
+    <div>
+        <h6>安全设置</h6>
+        <p class="securitySet">
+            邮箱：<span id="email" flag="true"></span>
+            <input type="text" name="email" class="inputBtn"/>
+            <button class="changeBtn">修改</button>
+        </p>
+        <p class="securitySet">
+            密码：<span id="passWord" flag="true"></span>
+            <input type="password" name="passWord" class="inputBtn"/>
+            <button class="changeBtn">修改</button>
+        </p>
+    </div>
+    
+    <div id="recordDiv">
+    	
+    </div>
+    
+
+</div>
+<script src="js/personalCenter.js"></script>
+</body>
+</html>

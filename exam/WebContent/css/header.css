@@ -1,0 +1,32 @@
+	#tt{
+		width:980px;
+		height:50px;
+		margin:0px auto;
+	}
+	#logo {
+		width: 300px;
+		height: 95%;
+		float: left;
+	}
+	
+	#logo a {
+		text-decoration: none;
+	}
+	
+	#info{
+		list-style:none;
+		height:38px;
+		width:400px;
+		float:right;
+	}
+	#info li{
+		float:left;
+		font-size:14px;
+		margin-right:30px;
+		height:100%;
+	}
+	#info li a{
+		text-decoration: none;
+		font-size:12px;
+		color:black;
+	}

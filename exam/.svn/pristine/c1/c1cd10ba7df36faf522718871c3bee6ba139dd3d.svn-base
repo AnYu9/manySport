@@ -1,0 +1,220 @@
+$('#showTable').datagrid({
+	url : '../user',
+	method : 'get',
+	columns : [ [ {
+		field : 'classChe',
+		checkbox : true
+	}, {
+		field : 'userId',halign:"center",align:"center",
+		title : '用户账号',
+		width : 150
+	}, {
+		field : 'userName',halign:"center",align:"center",
+		title : '用户姓名',
+		width : 150
+	}, {
+		field : 'passWord',halign:"center",align:"center",
+		title : '密码',
+		width : 100
+	}, {
+		field : 'sex',halign:"center",align:"center",
+		title : '性别',
+		width : 50
+	}, {
+		field : 'age',halign:"center",align:"center",
+		title : '年龄',
+		width : 50
+	}, {
+		field : 'integral',halign:"center",align:"center",
+		title : '积分',
+		width : 50
+	}, {
+		field : 'loginState',halign:"center",align:"center",
+		title : '用户状态',
+		width : 50,
+    	formatter: function(value,row,index){
+    		if (row.loginState=="N"){
+    			let enableBtn="<button class='executeBtn' style='background: green;' onclick='enable(\""+row.userId+"\")'>启用</button>";
+    			row.execute=enableBtn;
+    		}else if (row.loginState=="Y"){
+    			let disableBtn="<button class='executeBtn' style='background: red;' onclick='disable(\""+row.userId+"\")'>禁用</button>";
+    			row.execute=disableBtn;
+    		}
+    		return value;
+    	}
+	}, {
+		field : 'email',halign:"center",align:"center",
+		title : '邮箱',
+		width : 150
+	} ,{field:'execute',title:'',halign:"center",align:"center",resizable:false}] ],
+    onDblClickRow:function(index,row){
+    	var inputValues=$("#updateInforForm .textbox-value");
+    	var inputPrompts=$("#updateInforForm .textbox-prompt");
+    	for(var i=0;i<inputValues.length-1;i++){
+    		var key=inputValues[i].name;
+    		inputPrompts[i].value=row[key];
+        	inputValues[i].value=row[key];
+    	}
+    	$("#updateInforForm input[name=sex]").each(function(){
+    		if($(this).val()==row.sex){
+    			$(this).attr("checked","checked");
+    		}
+    	});
+		$('#updateDiv').dialog("open",true);
+    },
+	toolbar : [ {
+		text : "添加用户",
+
+		handler : function() {
+			$('#addDiv').dialog("open", true);
+		}
+	}, '-', {
+		text : "删除用户",
+		handler : function() {
+			var rows = $('#showTable').datagrid('getSelections');
+			var ids = new Array();
+			for (var i = 0; i < rows.length; i++) {
+				ids[i] = rows[i].userId;
+			}
+			if(ids.length>0){
+				$.ajax({
+					type : 'post',
+					url : "../user",
+					data : {
+						_method:"DELETE",
+						userIds : ids
+					},
+					success : function(result) {
+						if(result != null){
+							let executeCount=Math.parseInt(result);
+							if(executeCount=ids.length){
+								alert("操作成功！");
+								$('#showTable').datagrid('reload');
+							}else if(executeCount>0 && executeCount<ids.length){
+								alert("部分信息可能操作失败！");
+								$('#showTable').datagrid('reload');
+							}else{
+								alert("操作失败！");
+							}
+						}
+					},
+					error : function() {
+						alert("服务器繁忙，请稍后重试！");
+					}
+				});
+			}else{
+				alert("请选择至少一项信息来完成此操作！");
+			}
+		}
+	} ],
+	pagination : true
+});
+
+function enable(userId){
+	$.ajax({
+        url:"../user",
+        type:"post",
+        data:{
+        	_method:"PUT",
+        	userId:userId,
+        	loginState:"Y"
+        },
+        success:function (result) {
+			if(result=="true"){
+				alert("操作成功！");
+				$('#showTable').datagrid('reload');
+			}else{
+				alert("操作失败！");
+			}
+        }
+    });
+}
+function disable(userId){
+	$.ajax({
+        url:"../user",
+        type:"post",
+        data:{
+        	_method:"PUT",
+        	userId:userId,
+        	loginState:"N"
+        },
+        success:function (result) {
+			if(result=="true"){
+				alert("操作成功！");
+				$('#showTable').datagrid('reload');
+			}else{
+				alert("操作失败！");
+			}
+        }
+    });
+}
+
+$('#addDiv').dialog({
+	title : '新增',
+	width : 400,
+	height : 300,
+	closed : true,
+	buttons : [ {
+		text : "提交",
+		width : 50,
+		handler : function() {
+			sendForm("../user", $("#addInforForm"), "POST");
+		}
+	} ]
+});
+$('#updateDiv').dialog({
+    title: '修改',
+    width: 400,
+    height: 400,
+    closed:true,
+    buttons:[{
+        text:"提交",width:50,
+        handler:function () {
+        	sendForm("../user",$("#addInforForm"),"PUT");
+        }
+    }]
+});
+
+$("#showTable").datagrid("getPager").pagination({
+	pageSize : 5,// 每页显示的记录条数，默认为10
+	pageList : [ 5, 10, 15 ],// 可以设置每页记录条数的列表
+	beforePageText : '第',// 页数文本框前显示的汉字
+	afterPageText : '页    共 {pages} 页',
+	displayMsg : '当前显示 {from} 到 {to} 条记录   共 {total} 条记录',
+});
+
+function findQuery() {
+	let data = getFormParam($("#findForm"));
+	console.log(data);
+	$("#showTable").datagrid("load", data);
+}
+
+function getFormParam(form) {
+	var formData = {};
+	var t = $(form).serializeArray();
+	$.each(t, function() {
+		if (this.value != "") {
+			formData[this.name] = this.value;
+		}
+	});
+	return formData;
+}
+
+function sendForm(path, form, method) {
+	var formData = getFormParam(form);
+	formData["_method"] = method;
+	$.ajax({
+		url : path,
+		type : "post",
+		data : formData,
+		success : function(result) {
+			if (result == "true") {
+				alert("操作成功！");
+				$('#db').datagrid('reload');
+			} else {
+				alert("操作失败！");
+			}
+		}
+	});
+
+}

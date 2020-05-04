@@ -1,0 +1,198 @@
+*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		background:#eee;
+	}
+	#app{
+		width:980px;
+		height:550px;
+		margin:0px auto;
+		background:white;
+		position:relative;
+	}
+	#contains{
+		width:980px;
+		height:520px;
+	}
+	#exam{
+		width:700px;
+		height:100%;
+		float:left;
+		margin-right:10px;
+		background:url(../img/aa.jpg);
+	}
+	#examHead{
+		width:700px;
+		height:70px;
+	}
+	#eInfo{
+		width:700px;
+		height:30px;
+		margin-left:90px;
+	}
+	#examHead span{
+		margin-left:24px;
+		font-size:14px;
+	}
+	#examName{
+		text-align: center;
+		margin-bottom:8px;
+	}
+	#examBody{
+		width:700px;
+		height:395px;
+	}
+	#giao{
+		width: 100%;
+    	height: 390px;
+	}
+	#choose{
+		width:260px;
+		height:400px;
+		float:left;
+		background:#eee;
+	}
+	#time{
+		 text-align:center;
+		 margin-top:8px;
+		 margin-bottom:8px;
+	}
+	#flag{
+		margin-bottom:8px;
+	}
+	#flag span{
+		margin-left:35px;
+	}
+	#flag span div{
+		display:inline;
+		width:12px;
+		height:12px;
+		background:red;
+	}
+	.tmNo{
+		height:105px;
+		margin-top:10px;
+	}
+	.tmNo p{
+		width:250px;
+		background:rgb(28,128,190);
+		color:white;
+		margin-left:5px;
+		margin-right:5px;
+	}
+	.cLi{
+		list-style:none;
+		width:250px;
+		height:90px;
+	}
+	.cLi li{
+		float:left;
+		width:24px;
+		height:24px;
+		background:white;
+		margin-left:7.26px;
+		margin-top:5px;
+		text-align: center;
+    	font-size: 12px;
+    	color:black;
+		line-height:24px;
+		cursor: pointer;
+	}
+	#tmChoose{
+		width:100%;
+		height:55px;
+		line-height:30px;
+		
+	}
+	#tmChoose button:last-child{
+		float:right;
+	}
+	#tmChoose button{
+		width:60px;
+		height:30px;
+		margin-left:170px;
+		border-radius:5px;
+		background:rgb(19,165,236);
+		color:white;
+		border:0;
+		margin-top:5px;
+	}
+	#anwer{
+		margin-top:10px;
+	}
+	#anwer p{
+		font-size:14px;
+		margin:0px auto;
+		width:85px;
+		height:40px;
+		line-height:40px;
+		text-align:center;
+		border-radius:10px;
+		cursor: pointer;
+		background:rgb(19,165,236);
+		color:white;
+	}
+	#tmTitle{
+		width:150px;
+		height:32px;
+		border-top: 20px solid rgb(30,130,192);
+    	border-right: 37px solid transparent;
+    	margin-left: 8px;
+    	position:relative;
+	}
+	#tmTitle p{
+		line-height:32px;
+		color:white;
+		margin-left:8px;
+		position:absolute;
+		top:-27px;
+	}
+	#tm{
+		width:100%;
+		height:30px;
+		margin-bottom:10px;
+	}
+	#tm p{
+		margin-left:45px;
+		font-size:14px;
+		line-height:30px;
+	}
+	#options{
+		width:100%;
+	}
+	#options p{
+		margin-left:45px;
+		font-size:14px;
+		line-height:45px;
+	}
+	#options p span{
+		margin-left:8px;
+	}
+	#textarea{
+		width:490px;
+		height:90px;
+		display:none;
+		background:#eee;
+		position: fixed;
+		left: 270px;
+		top: 230px;
+	}
+	#textarea input{
+		margin-left: 142px;
+		width: 200px;
+		height: 25px;
+		margin-top: 12px;
+		margin-bottom:20px;
+	}
+	#textarea button{
+		width:60px;
+		height:25px;
+		border-radius:5px;
+		border:1px solid white;
+		margin-left:80px;
+	}
+	#textarea button:first-of-type {
+		margin-left:140px;
+	}

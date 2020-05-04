@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>考生主页</title>
+<script src="../easyui/jquery.min.js"></script>
+<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+	<div id="app">
+		<div id="header"></div>
+		<div id="main1">
+			<div id="main">
+				<a href="examList.jsp">
+					<div class="elem">
+						<img src="../img/c.png" />
+						<h2>近期考试</h2>
+					</div>
+				</a> <a id="no">
+					<div class="elem" style="background: rgb(245, 173, 99);">
+						<img src="../img/f.png" />
+						<h2>成绩查询</h2>
+					</div>
+				</a> <a href="#">
+					<div class="elem" style="background: rgb(246, 203, 90);">
+						<img src="../img/a.png" style="margin-left: 15px;" />
+						<h2>练习测试</h2>
+					</div>
+				</a> <a href="#">
+					<div class="elem" style="background: rgb(142, 202, 194); margin-left:115px;">
+						<img src="../img/d.png" />
+						<h2>我的笔记</h2>
+					</div>
+				</a> <a href="../personalCenter.html">
+					<div class="elem" style="background: rgb(108, 149, 254);">
+						<img src="../img/b.png" />
+						<h2>个人设置</h2>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		$("#header").load("../header.jsp");
+		$('#no').click(function(e){
+			alert('该功能暂未对外开放');
+		});
+	</script>
+</body>
+</html>

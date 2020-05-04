@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>exam</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+	<!-- <context-param>
+		<param-name>contextConfigLocation</param-name>
+		Spring配置文件的名称和路径存放位置，如果文件放置在/WEB-INF/目录下且名称为applicationContext.xml，可以不配置此项，多个文件使用“,”分割。
+		<param-value>classpath:application.xml</param-value>
+	</context-param>
+	<listener>
+		spring 加载监听器 该监听器用于在web环境中启动Spring容器
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> -->
+	
+  <!--配置RequestContextListener监听器-->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+  <servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- SpringMVC配置文件路径 -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springmvc.xml,classpath:application.xml</param-value>
+		</init-param>
+		<!-- 启动时自动加载配置文件 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 启用表单隐藏属性提交put，delete请求 -->
+	<filter>
+	    <filter-name>HiddenHttpMethodFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>HiddenHttpMethodFilter</filter-name>
+	    <!-- 备注，这边的名称必须和配置'springmvc'的servlet名称一样 -->
+	    <servlet-name>dispatcherServlet</servlet-name>    
+	</filter-mapping> 
+</web-app>
